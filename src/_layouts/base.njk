@@ -1,0 +1,104 @@
+{% set assetHash = global.random() %}
+<!DOCTYPE html>
+<html lang="{{ page.lang }}" dir="ltr">
+  <head>
+    <!-- Welcome stranger! I'm not minifying my html so you can look under the hood. -->
+
+    <!-- 1 charset/http-equiv/viewport -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 2 title -->
+    <title>
+      {% if seo.title %} {{ seo.title }}
+      {% elif title %}
+      {{ title }} | {{ meta[page.lang].siteName }}
+      {% else %}
+      {{ meta[page.lang].siteName }}
+      {% endif %}
+    </title>
+
+    <!-- 3 preconnect/async js -->
+    <!-- 4 synchronous js  -->
+    <!-- load theme toggle first to avoid color flashing on page load and inline render blocking js  -->
+
+    {% set js %} {% include "theme-toggle-inline.js" %} {% endset %}
+    <script>
+          <!-- prettier-ignore -->
+      {{ js | jsmin | safe }}
+    </script>
+
+    <!-- include inline base schema application/ld+jso -->
+    {% include "schemas/base-schema.njk" %} {% if schema == 'blog' %}
+    <!-- include blogpost schema  -->
+    {%- include "schemas/blogpost-schema.njk" %} {% endif %}
+    <!-- 5 synchronous css / inline css  -->
+    {% set css %}{% include "global-inline.css" %}{% endset %}
+    <style>
+      {{ css | cssmin | safe }}
+    </style>
+
+    <!-- 6 preload -->
+
+    <!-- general preloads -->
+    <link
+      rel="preload"
+      href="/assets/fonts/outfit/outfit-v5-latin-700-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/outfit/outfit-v5-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- preloads in page data -->
+    {% if preloads -%}
+    <!-- prettier-ignore -->
+    <link rel="preload"
+        href="{{ preloads.href }}"
+        as="{{ preloads.as }}"
+        {% if preloads.type %}type={{ preloads.type }}{% endif %}{% if preloads.imagesrcset %}imagesrcset="{{ preloads.imagesrcset }}" {% endif %}
+        {% if preloads.crossorigin %}crossorigin{% endif %} />
+    {% endif %}
+
+    <!-- 7 defered js  -->
+    <script type="module" src="/assets/scripts/app.js" defer></script>
+    <script
+      defer
+      data-domain="lenesaile.com"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+
+    <!-- 8 everything else: meta tags, icons, open graph etc.  -->
+    {% include "partials/meta-info.njk" %}
+  </head>
+
+  <body
+    class="relative"
+    style="--nav-list-color: {{ navcolor or 'var(--color-text)' }}; --nav-list-bg: {{ navbg or 'var(--color-bg)' }}"
+  >
+    <!-- header -->
+    {% include "partials/header.njk" %} {% include "partials/lang-switch.njk" %}
+
+    <!-- content slot -->
+
+    <main id="main" class="relative">{{ content | safe }}</main>
+
+    <!-- footer -->
+    {% include "partials/footer.njk" %}
+
+    <!-- yt script if active-->
+    {% if youtube %}
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.4.0/lite-youtube.min.js"
+    ></script>
+    {% endif %}
+  </body>
+</html>

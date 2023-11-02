@@ -1,0 +1,250 @@
+code,
+pre {
+  padding: 0.4em 0.4em 0.2em 0.4em;
+  font-family: var(--font-mono);
+  background-color: var(--color-bg-code);
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: var(--size-step-code);
+}
+
+pre[class*='language-'] {
+  padding: var(--space-s-m);
+}
+
+code[class*='language-'] {
+  padding: 0;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  color: var(--color-text);
+  background-color: var(--color-bg-code);
+  line-height: 1.5;
+  border-radius: var(--border-radius);
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+:not(pre) > code[class*='language-'] {
+  white-space: normal;
+  border-radius: var(--border-radius);
+  padding: 0.1em;
+}
+
+pre[class*='language-'] {
+  overflow: auto;
+  position: relative;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+  color: #fd9170;
+}
+
+[class*='language-'] .namespace {
+  opacity: 0.7;
+}
+
+.token.atrule {
+  color: var(--color-code-secondary);
+}
+
+.token.attr-name {
+  color: var(--color-code-primary);
+}
+
+.token.attr-value {
+  color: var(--color-code-primary);
+}
+
+.token.attribute {
+  color: var(--color-code-primary);
+}
+
+.token.boolean {
+  color: var(--color-code-secondary);
+}
+
+.token.builtin {
+  color: var(--color-code-secondary);
+}
+
+.token.cdata {
+  color: var(--color-code-quaternary);
+}
+
+.token.char {
+  color: var(--color-code-quaternary);
+}
+
+.token.class {
+  color: var(--color-code-secondary);
+}
+
+.token.class-name {
+  color: var(--color-code-primary);
+}
+
+.token.color {
+  color: var(--color-code-primary);
+}
+
+.token.comment {
+  color: var(--color-code-neutral);
+}
+
+.token.constant {
+  color: var(--color-code-secondary);
+}
+
+.token.deleted {
+  color: var(--color-code-primary);
+}
+
+.token.doctype {
+  color: var(--color-code-secondary);
+}
+
+.token.entity {
+  color: var(--color-code-primary);
+}
+
+.token.function {
+  color: var(--color-code-secondary);
+}
+
+.token.hexcode {
+  color: var(--color-code-primary);
+}
+
+.token.id {
+  color: var(--color-code-secondary);
+  font-weight: bold;
+}
+
+.token.important {
+  color: var(--color-code-secondary);
+  font-weight: bold;
+}
+
+.token.inserted {
+  color: var(--color-code-quaternary);
+}
+
+.token.keyword {
+  color: var(--color-code-tertiary);
+}
+
+.token.number {
+  color: var(--color-code-quaternary);
+}
+
+.token.operator {
+  color: var(--color-text);
+}
+
+.token.prolog {
+  color: var(--color-code-quaternary);
+}
+
+.token.property {
+  color: var(--color-code-quaternary);
+}
+
+.token.pseudo-class {
+  color: var(--color-code-primary);
+}
+
+.token.pseudo-element {
+  color: var(--color-code-primary);
+}
+
+.token.punctuation {
+  color: var(--color-text);
+}
+
+.token.regex {
+  color: var(--color-code-primary);
+}
+
+.token.selector {
+  color: var(--color-code-quaternary);
+}
+
+.token.string {
+  color: var(--color-code-primary);
+}
+
+.token.symbol {
+  color: var(--color-code-secondary);
+}
+
+.token.tag {
+  color: var(--color-code-quaternary);
+}
+
+.token.unit {
+  color: var(--color-code-quaternary);
+}
+
+.token.url {
+  color: var(--color-code-quaternary);
+}
+
+.token.variable {
+  color: var(--color-code-quaternary);
+}
+
+.token.deleted {
+  background-color: var(--color-code-quaternary);
+}
+.token.inserted {
+  background-color: var(--color-code-secondary);
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+  display: block;
+}
+
+.codepen {
+  padding: var(--space-sm);
+  color: var(--color-light);
+  border: 2px dashed var(--color-dark);
+}
+
+.cp_embed_wrapper {
+  position: relative;
+  overflow: auto;
+  display: grid;
+  place-items: center;
+  grid-template-areas: 'container';
+  resize: horizontal;
+}
+
+.cp_embed_wrapper iframe {
+  grid-area: container;
+  width: 100%;
+}

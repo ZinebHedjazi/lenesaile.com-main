@@ -1,0 +1,43 @@
+.card {
+  background-color: var(--color-bg-card);
+  color: var(--color-light);
+  padding: var(--space-m-l);
+  border-radius: var(--border-radius);
+  border: 3px solid var(--color-bg-card);
+  max-width: unset;
+}
+
+.card.note span {
+  font-size: var(--size-step-0);
+  background-color: var(--color-quaternary);
+  border-radius: var(--border-radius);
+  padding: 0.1rem 0.4rem;
+  color: var(--color-dark);
+  margin-inline-end: var(--gutter);
+}
+
+.card.note p {
+  font-size: var(--size-step-0);
+}
+
+.card ::selection {
+  color: var(--color-bg);
+  background-color: var(--color-secondary);
+}
+
+.card:not(.note) h2 {
+  font-size: var(--size-step-3);
+}
+
+.card:not(.note):hover,
+.card:not(.note):focus-within {
+  border: 3px solid var(--color-quaternary);
+}
+
+.card:not(.note) a {
+  text-decoration: none;
+}
+
+.card:not(.note):focus-within a:focus {
+  outline: none;
+}

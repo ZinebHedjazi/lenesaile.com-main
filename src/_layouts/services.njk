@@ -1,0 +1,40 @@
+---
+layout: base
+navcolor: 'var(--color-light)'
+navbg: 'var(--color-dark)'
+---
+
+<header class="section overflow-hidden" style="--spot-color: var(--color-secondary)">
+  <div
+    class="section__inner region"
+    style="--region-space-bottom: 0; --region-space-top: var(--space-3xl)"
+  >
+    <div class="wrapper | content relative avatar-content">
+      <section class="prose | avatar-content__inner">
+        <h1 class="fade-in-bottom">{{ title }}</h1>
+        <p>{{ lead }}</p>
+      </section>
+      {% include "svg/lene-portatil.svg" %}
+    </div>
+  </div>
+
+  {% include 'svg/divider-curve.svg' %}
+</header>
+
+<article class="">
+  <article class="region">
+    <div class="wrapper flow">
+      <ul class="features grid mt-l-xl" role="list">
+        {% for item in tools.items %}
+        <li class="flow">
+          <div aria-hidden="true">{% include 'icons/tool-' + item.icon %}</div>
+          <h2 style="font-size: var(--size-step-3)">
+            {{ item.title }}
+          </h2>
+          <p>{{ item.summary | md | safe }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </article>
+</article>

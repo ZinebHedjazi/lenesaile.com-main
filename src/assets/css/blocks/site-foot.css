@@ -1,0 +1,21 @@
+.site-foot {
+  padding: var(--space-m-l);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--size-step-0);
+}
+
+.site-foot__inner {
+  display: flex;
+  gap: var(--space-xs-s);
+  justify-content: center;
+}
+
+:not(nav).site-foot__inner {
+  flex-wrap: wrap;
+}
+
+.site-foot svg {
+  width: 1em;
+  height: 1em;
+}

@@ -1,0 +1,79 @@
+---
+layout: base
+schema: blog
+preloads:
+  href: '/assets/fonts/fira/firacode-medium-webfont.woff2'
+  as: 'font'
+  type: 'font/woff2'
+  crossorigin: true
+---
+
+<article
+  id="{{ title | slugify }}"
+  class="region blog | h-entry"
+  style="--region-space-top: var(--space-4xl)"
+>
+  <div class="wrapper flow content">
+    <h1 class="gradient-text | p-name">{{ title }}</h1>
+
+    <dl class="meta">
+      <!-- date -->
+      {% set definedDate = date %}
+      <dt>
+        {{ meta[page.lang].blog.published | capitalize }}
+      </dt>
+      <dd>{% include "partials/date.njk" %}</dd>
+
+      {% if lastEdit %}
+      <!-- last edit -->
+      {% set definedDate = lastEdit %}
+      <dt>{{ meta[page.lang].blog.edited | capitalize }}</dt>
+      <dd>{% include "partials/date.njk" %}</dd>
+      {% endif %}
+
+      <!-- reading time -->
+      <dt>{{ meta[page.lang].blog.reading | capitalize }}</dt>
+      <dd>{{ content | readingTime }} {{ meta[page.lang].blog.unit }}</dd>
+    </dl>
+
+    <!-- image -->
+    {% if image %}
+
+    <div class="decoration">
+      {% image image, "", "object-fit-cover", alt, "eager", "(min-width: 1690px) 50vw,
+      100vw" %}
+    </div>
+    {% endif %}
+
+    <div class="flow e-content">
+      {{ content | safe }}
+
+      <hr />
+
+      <p>
+        {{ meta[page.lang].blog.githubEdit }}
+        <a
+          href="https://github.com/madrilene/lenesaile.com/tree/main/{{ page.inputPath }}"
+          >GitHub</a
+        >.
+      </p>
+    </div>
+  </div>
+
+  <div hidden>
+    <!--  h-card infos -->
+    <a class="u-url" href="{{ page.url | url | absoluteUrl(meta.url) }}">{{ title }}</a>
+    <p class="h-card p-author">
+      <a class="p-name u-url" rel="author" href="{{ meta.url }}">{{ meta.author }}</a>
+      <img class="u-photo" src="{{ meta.authorAvatar | url | absoluteUrl(meta.url) }}" />
+    </p>
+  </div>
+</article>
+
+<!-- set webmentions url -->
+{% set webmentionUrl %}{{ page.url | url | absoluteUrl(meta.url) }}{% endset %}
+<!-- include webmentions -->
+{% include "partials/webmentions.njk" %}
+
+<!-- cta -->
+{% include 'partials/cta.njk' %}

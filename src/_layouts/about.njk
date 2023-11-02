@@ -1,0 +1,40 @@
+---
+layout: base
+---
+
+<header class="section spot-color-primary" style="--spot-color: var(--color-primary)">
+  <div
+    class="section__inner region"
+    style="--region-space-bottom: var(--space-2xl); --region-space-top: var(--space-3xl)"
+  >
+    <div
+      class="wrapper | content relative avatar-content"
+      style="--region-space-top: var(--space-4xl)"
+    >
+      <h1 class="fade-in-bottom">{{ title }}</h1>
+      <p>{{ lead | md | safe }}</p>
+    </div>
+  </div>
+  {% include 'svg/divider-pixels.svg' %}
+</header>
+
+<article class="region" style="--region-space-bottom: var(--space-3xl)">
+  <div class="wrapper flow content">
+    {{ content | safe }}
+
+    <section class="breakout relative">
+      <div class="sidebar my-l-xl flow">
+        <header class="flow mr-xs">
+          <h2>{{ breakout.title }}</h2>
+          <p>{{ breakout.intro }}</p>
+        </header>
+        {% image image, "object-fit-cover", "object-fit-cover", "Elemento decorativo",
+        "eager" %}
+      </div>
+    </section>
+
+    {{ finalWords | md | safe }}
+  </div>
+</article>
+
+{% include 'partials/cta.njk' %}

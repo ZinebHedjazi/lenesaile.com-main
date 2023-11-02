@@ -1,0 +1,19 @@
+# Misc
+*.log
+npm-debug.*
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+.env
+.cache
+_cache/
+
+# Local Netlify folder
+.netlify
+
+# Node modules and output
+node_modules
+dist
+src/_includes/global-inline.css
+src/_includes/theme-toggle-inline.js
